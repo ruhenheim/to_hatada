@@ -1,4 +1,20 @@
-.center.jumbotron
-  .text-center
-    h1 Welcome to the Micropost
-    = link_to 'Signup', signup_path, class: 'btn btn-primary btn-lg'
+- if logged_in?
+  .row
+    aside.col-md-4
+      = form_for(Micropost.new) do |f|
+        .form-group
+          = f.text_area :content, class: 'form-control', rows: 5
+        = f.submit 'Post', class: 'btn btn-primary btn-block'
+    .col-xs-8
+      / = render 'microposts/microposts', microposts: @microposts
+      - @list.each do |micropost|
+        p
+          = micropost.content
+          span= "(投稿者: #{micropost.user.name})"
+          = link_to 'delete', micropost, method: :delete
+
+- else
+  .center.jumbotron
+    .text-center
+      h1 Welcome to the Micropost
+      = link_to 'Signup', signup_path, class: 'btn btn-primary btn-lg'
