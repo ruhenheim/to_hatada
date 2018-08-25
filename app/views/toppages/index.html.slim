@@ -12,6 +12,7 @@
           = micropost.content
           span= "(投稿者: #{micropost.user.name})"
           = link_to 'delete', micropost, method: :delete, class: 'btn btn-danger btn-xs'
+          = link_to 'favo', "/favorites?id=#{micropost.id}", method: :post, class: 'btn btn-primary btn-xs'
 
 - else
   .center.jumbotron
