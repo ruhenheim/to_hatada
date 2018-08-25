@@ -11,7 +11,7 @@
         p
           = micropost.content
           span= "(投稿者: #{micropost.user.name})"
-          = link_to 'delete', micropost, method: :delete
+          = link_to 'delete', micropost, method: :delete, class: 'btn btn-danger btn-xs'
 
 - else
   .center.jumbotron
